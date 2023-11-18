@@ -1,0 +1,20 @@
+{% extends 'layout.html' %} {% block content %}
+
+<h1>Return Book</h1>
+
+<form method="POST">
+  <div class="form-group">
+    <label>Borrow ID</label>
+    <input
+      name="borrow_id"
+      class="form-control"
+      value="{{
+      borrow.book.id
+      }}"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Return Book</button>
+</form>
+
+{% endblock %}

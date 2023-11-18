@@ -1,0 +1,30 @@
+{% extends 'layout.html' %} {% block content %}
+
+<h1>{{ book.title }}</h1>
+
+<p>By {{ book.author.name }}</p>
+
+<p>Genre: {{ book.genre }}</p>
+
+<p>Published: {{ book.publish_date }}</p>
+
+<h2>Borrow History</h2>
+
+<ul>
+  {% for borrow in borrows %}
+  <li>
+    {{ borrow.user.name }} - {{ borrow.checkout_date }}, Checkout Date: {{
+    borrow.checkout_date }}, Return Date: {{borrow.return_date}}
+  </li>
+  {% endfor %}
+</ul>
+
+{% if not book.borrows %}
+<a href="{{ url_for('borrow_book',  book_id=book.id)}}" class="btn btn-primary">
+  Borrow Book
+</a>
+{% endif %} {% if book.borrows and borrows[-1].return_date %}
+<a href="{{ url_for('borrow_book',  book_id=book.id)}}" class="btn btn-primary">
+  Borrow Book
+</a>
+{% endif %} {% endblock %}

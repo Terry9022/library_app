@@ -1,0 +1,21 @@
+{% extends 'layout.html' %} {% block content %}
+
+<h1>{{ user.name }}</h1>
+
+<p>Email: {{ user.email }}</p>
+
+<p>Address: {{ user.address }}</p>
+
+<h2>Currently Borrowed</h2>
+
+<ul>
+  {% for borrow in borrows %} {% if borrow.return_date == None %}
+  <li>{{ borrow.book.title }}</li>
+  {% endif %} {% endfor %}
+</ul>
+
+<a href="{{ url_for('edit_user', user_id=user.id) }}" class="btn btn-primary">
+  Edit Profile
+</a>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+<!-- templates/show_books.html -->
+
+{% extends 'layout.html' %} {% block content %}
+
+<h1>Books</h1>
+
+<table class="text-center table table_col_padding">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Genre</th>
+      <th>Publish Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for book in books %}
+    <tr>
+      <td>{{ book.id }}</td>
+      <td>
+        <a href="{{ url_for('book_detail',  book_id=book.id) }}"
+          >{{ book.title }}</a
+        >
+      </td>
+      <td>{{ book.author.name }}</td>
+      <td>{{ book.genre }}</td>
+      <td>{{ book.publish_date }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

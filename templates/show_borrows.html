@@ -1,0 +1,42 @@
+<!-- templates/show_borrows.html -->
+
+{% extends 'layout.html' %} {% block content %}
+
+<h1>Borrow Records</h1>
+
+<table class="text-center table table_col_padding">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User</th>
+      <th>Book</th>
+      <th>Checkout Date</th>
+      <th>Due Date</th>
+      <th>Return Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for borrow in borrows %}
+    <tr>
+      <td>{{ borrow.id }}</td>
+      <td>{{ borrow.user.name }}</td>
+      <td>{{ borrow.book.title }}</td>
+      <td>{{ borrow.checkout_date }}</td>
+      <td>{{ borrow.due_date }}</td>
+      <td>{{ borrow.return_date }}</td>
+      {% if borrow.return_date == None %}
+      <td>
+        <a
+          href="{{ url_for('return_book', borrow_id=borrow.id) }}"
+          class="btn btn-secondary"
+        >
+          Return Book
+        </a>
+      </td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

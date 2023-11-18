@@ -1,0 +1,32 @@
+{% extends 'layout.html' %} {% block content %}
+
+<h1>Custom SQL Query</h1>
+
+<form method="post" class="align-bottom">
+  <textarea name="query" rows="4" cols="60" placeholder="Enter your SQL query">
+{{ query }}</textarea
+  >
+  <button type="submit" class="align-bottom btn btn-primary mb-1">
+    Run Query
+  </button>
+</form>
+
+<h1 class="my-2">SQL Query Results</h1>
+
+{% if result %}
+
+<table class="text-center table table_col_padding">
+  {% for row in result %}
+  <tr>
+    {% for column in row %}
+    <td>{{ column }}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+
+{% else %}
+
+<p>No results to display.</p>
+
+{% endif %}{% endblock %}

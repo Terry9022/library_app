@@ -1,0 +1,26 @@
+<!-- templates/show_authors.html -->
+
+{% extends 'layout.html' %} {% block content %}
+
+<h1>Authors</h1>
+
+<table class="text-center table table_col_padding">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Biography</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for author in authors %}
+    <tr>
+      <td>{{ author.id }}</td>
+      <td>{{ author.name }}</td>
+      <td>{{ author.biography }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
