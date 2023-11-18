@@ -3,9 +3,9 @@
 {% extends 'layout.html' %} {% block content %}
 
 <div class="jumbotron mt-4 mb-4">
-  <h1 class="display-4">Library App</h1>
+  <h1 class="display-4 font-weight-normal">Library App</h1>
   <p class="lead">
-    View and manage borrow transactions, books, authors, and library users.
+    View and manage borrow transactions, books, authors, and library users
   </p>
 </div>
 
@@ -13,7 +13,7 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Books</h5>
-      <p class="card-text">Browse and check out books.</p>
+      <p class="card-text">Browse and check out books</p>
       <a href="{{ url_for('show_books') }}" class="btn btn-primary"
         >View Books</a
       >
@@ -23,7 +23,7 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Users</h5>
-      <p class="card-text">Manage registered library users.</p>
+      <p class="card-text">Manage registered library users</p>
       <a href="{{ url_for('show_users') }}" class="btn btn-primary"
         >View Users</a
       >
@@ -33,7 +33,7 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Authors</h5>
-      <p class="card-text">Manage book authors.</p>
+      <p class="card-text">Manage book authors</p>
       <a href="{{ url_for('show_authors') }}" class="btn btn-primary"
         >View Authors</a
       >
@@ -43,7 +43,7 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Borrows</h5>
-      <p class="card-text">Manage borrow transactions.</p>
+      <p class="card-text">Manage borrow transactions</p>
       <a href="{{ url_for('show_borrows') }}" class="btn btn-primary"
         >View Borrows</a
       >
@@ -68,7 +68,7 @@
     <div class="card-body">
       <h5 class="card-title">SQL query page</h5>
       <p class="card-text">
-        Execute a custom SQL query to the library application.
+        Execute a custom SQL query to the library application
       </p>
       <a href="{{ url_for('sql_query') }}" class="btn btn-secondary"
         >Go to custom SQL query page</a
