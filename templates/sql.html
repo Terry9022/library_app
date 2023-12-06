@@ -16,7 +16,13 @@
 {% if result %}
 
 <table class="text-start table table_col_padding">
-  {% for row in result %}
+  {% if headers %}
+  <tr>
+    {% for header in headers %}
+    <th>{{ header }}</th>
+    {% endfor %}
+  </tr>
+  {% endif %} {% for row in result %}
   <tr>
     {% for column in row %}
     <td>{{ column }}</td>

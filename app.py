@@ -177,12 +177,14 @@ def sql_query():
     
     try:
         result = db.session.execute(text(query)).fetchall()
+        # Get column names    
+        headers = db.session.execute(text(query)).keys()
     except Exception as e:
         print(e)
         flash('Error executing query: ' + str(e),'alert-danger')
         return redirect('/sql')
 
-    return render_template('sql.html', query=query, result=result)
+    return render_template('sql.html', query=query, headers=headers, result=result)
 
   return render_template('sql.html')
 
