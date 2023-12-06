@@ -25,7 +25,7 @@ class Book(db.Model):
 class Author(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    biography = db.Column(db.Text, nullable=False)
+    biography = db.Column(db.Text)
     
 class Borrow(db.Model):
     id = db.Column(db.Integer, primary_key=True)  

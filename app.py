@@ -5,6 +5,7 @@ from sqlalchemy.sql import text
 from models import db, User, Book, Author, Borrow
 from datetime import datetime
 from datetime import date
+import csv 
 
 app = Flask(__name__)
 app.secret_key = "super secret key"
@@ -184,6 +185,24 @@ def sql_query():
     return render_template('sql.html', query=query, result=result)
 
   return render_template('sql.html')
+
+@app.route('/insert_more_books')
+def insert_more_books():
+    with app.app_context():
+        with open('books_record.csv') as csv_file:
+            csv_reader = csv.reader(csv_file, delimiter=',')
+            next(csv_reader) # skip header row
+            
+            for row in csv_reader:
+                author = Author(name= row[2])
+                book = Book(title=row[1], author=author, genre=row[3], publish_date=datetime.strptime(row[4], '%d/%m/%y'))
+                db.session.add(book)
+
+            db.session.commit() 
+            print("Added books from CSV!")
+        flash('Insert more books into database successfully!',"alert-success")
+        return redirect(url_for('index'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
